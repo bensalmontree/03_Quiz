@@ -1,6 +1,3 @@
-import random
-
-
 # Functions go here
 
 #  Check if response to question is valid
@@ -24,26 +21,21 @@ def choice_checker(question, valid_list, error):
         print(error)
         print()
 
-# Displays instuctions if asked
-def instructions():
-    print()
-    print("Print Instructions")
-    return ""
-
 
 # Main Routine
 
 # List of valid responses
-yes_no_list = ["yes", "no"]
-true_false_list = ["true", "false"]
+select_difficulty_list = ["easy", "normal", "hard", "xxx"]
+select_difficulty = ""
 
-# Ask user if they have played before
-# If 'yes', show instructions
-played_before = choice_checker("Have you played the "
-                           "game before? ", yes_no_list, "Please enter yes or no")
+# Ask user for selected difficulty
+# Contiue game with selected difficulty
+while select_difficulty != "xxx":
+    select_difficulty = choice_checker("Select between a 'Easy', 'Normal' or 'Hard' quiz... ", select_difficulty_list, "Please enter 'Easy', 'Normal' or 'Hard'.")
 
-if played_before == "no":
-    instructions()
-
-print()
-print("Program Continues")
+    if select_difficulty == "easy":
+        print("Continue with Easy quiz")
+    elif select_difficulty == "normal":
+        print("Continue with Normal quiz")
+    elif select_difficulty == "hard":
+        print("Continue with Hard quiz")
