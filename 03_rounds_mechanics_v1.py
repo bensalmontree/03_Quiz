@@ -31,22 +31,42 @@ questions = "Question 1... Is this statement 'True' or 'False'? "
 select_difficulty_list = ["easy", "normal", "hard", "xxx"]
 select_difficulty = ""
 
+# Ask question
+choose_instruction = "'Math Statement' - Is this True or False? "
+
 # Ask user for selected difficulty
 select_difficulty = choice_checker("Select between a 'Easy', 'Normal' or 'Hard' quiz... ", select_difficulty_list, "Please enter 'Easy', 'Normal' or 'Hard'.")
 
-
-# Contiue game with selected difficulty
+# Print out difficulty heading 
 print()
 if select_difficulty == "easy":
     rounds = 10
-    heading = "{} Easy Math Questions".format(rounds)
+    heading = "--- 10 Easy Math Questions ---\n"
 
 elif select_difficulty == "normal":
     rounds = 15
-    heading = "{} Normal Math Questions".format(rounds)
-
+    heading = "--- 15 Normal Math Questions ---\n"
 elif select_difficulty == "hard":
     rounds = 25
-    heading = "{} Hard Math Quiz".format(rounds)
+    heading = "--- 25 Hard Math Quiz ---\n"
 
 print(heading)
+
+end_game = "no"
+while end_game == "no":
+
+    # Start of Quiz Play Loop
+
+    # Question Heading
+    print("Question {}".format(rounds_played +1, rounds))
+    choose = input(choose_instruction)
+
+    # Rest of Quiz
+    print("You chose {}\n".format(choose))
+    rounds_played += 1
+
+    # End quiz if # of rounds has been played
+    if rounds_played == rounds:
+        break
+
+print("Thank you for using your big brain :)")
