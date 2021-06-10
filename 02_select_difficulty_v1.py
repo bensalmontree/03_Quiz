@@ -1,3 +1,5 @@
+# Quiz component 2 - Select difficulty
+
 # Functions go here
 
 #  Check if response to question is valid

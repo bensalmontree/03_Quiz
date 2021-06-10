@@ -1,3 +1,5 @@
+# Quiz component 3 - Rounds Mechanic
+
 # Functions go here
 
 #  Check if response to question is valid
@@ -23,9 +25,7 @@ def choice_checker(question, valid_list, error):
 
 
 # Main Routine
-
 rounds_played = 0
-questions = "Question 1... Is this statement 'True' or 'False'? "
 
 # List of valid responses
 select_difficulty_list = ["easy", "normal", "hard", "xxx"]
