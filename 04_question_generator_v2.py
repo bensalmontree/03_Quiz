@@ -9,4 +9,3 @@ for i in range(3):
     gk_question = "{} + {}".format(num1, num2)
     gk_ans = eval(gk_question)
     print(gk_question)
-    print(gk_ans)
