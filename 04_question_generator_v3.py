@@ -14,5 +14,10 @@ question = "{} {} {}".format(num1, symbol, num2)
 answer = eval(question)
 
 print(answer)
-input("(T/F) " + question + ": ")
+user_choice = input("(T/F) " + question + ": ")
 
+if user_choice == answer:
+    print("Correct")
+
+else:
+    print("Incorrect")
