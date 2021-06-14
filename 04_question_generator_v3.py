@@ -16,10 +16,3 @@ answer = eval(question)
 print(answer)
 input("(T/F) " + question + ": ")
 
-if input == answer:
-    print("correct")
-    
-else:
-    print("incorrect")
-
-
