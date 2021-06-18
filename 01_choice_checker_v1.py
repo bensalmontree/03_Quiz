@@ -1,7 +1,7 @@
+# Quiz component 1 - Choice checker (Ask user and confirm response. Instructions function displays if asked)
+
 import random
 
-
-# Quiz component 1 - Choice checker (Ask user and confirm response. Instructions function displays if asked)
 
 # Functions go here
 

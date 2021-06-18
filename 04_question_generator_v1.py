@@ -1,3 +1,5 @@
+# Quiz component 4 - Generate question
+
 from random import *
 
 score = 0

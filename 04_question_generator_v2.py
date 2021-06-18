@@ -1,3 +1,5 @@
+# Quiz component 4 - Generate question
+
 from random import *
 
 for i in range(3):
@@ -21,7 +23,7 @@ for i in range(3):
         gk_ans = "False"
 
     print("Correct Answer = {}".format(gk_ans))
-    
+
     user_choice = input("{} = ".format(gk_question))
     
     if user_choice == gk_ans:

@@ -1,5 +1,3 @@
-# Quiz component 4 - Generate question
-
 import random
 
 comparisons = ["<", ">", "=="]
@@ -14,18 +12,17 @@ for item in range(0, 5):
     answer = eval(question)
 
     if answer == True:
-        answer = "true"
+        answer = "True"
 
     else:
-        answer = "false"
+        answer = "False"
 
-    print("Correct answer = {}".format(answer))
+    print(answer)
 
-    user_choice = input("{} = ".format(question)).lower()
+    user_choice = input("{} = ".format(question))
     
     if user_choice == answer:
         print("Correct\n")
 
     else:
         print("Sorry that is the wrong answer\n")
-
