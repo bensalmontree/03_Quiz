@@ -22,11 +22,10 @@ def choice_checker(question, valid_list, error):
 
 select_difficulty = ""
 rounds_played = 0
-choose_instruction = "'Math Statement' - Is this True or False? "
 
 comparisons = ["<", ">", "=="]
 add_sub = ["+", "-", "*"]
-mul_div = ["*", "/"]
+mul_div = ["*"]
 true_false_list = ["true", "t", "false", "f"]
 difficulty_list = ["easy", "normal", "hard", "xxx"]
 

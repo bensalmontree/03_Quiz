@@ -20,32 +20,24 @@ def choice_checker(question, valid_list, error):
         print(error)
         print()
 
-comparisons = ["<", ">", "=="]
-user_responses_list = ["true", "t", "false", "f"]
 
-num_1 = 4
-num_2 = 6
+user_responses = ["true", "t", "false", "f"]
+comparisons = ["*", "+", "-"]
 
-for item in range(0, 5):
-    operator = random.choice(comparisons)
+num_1 = random.randint(1,50)
+num_2 = random.randint(1,50)
 
-    question = "{} {} {}".format(num_1, operator, num_2)
-    answer = eval(question)
+operator = random.choice(comparisons)
+question = "{} {} {}".format(num_1, operator, num_2)
+answer = eval(question)
 
-    if answer == True:
-        answer = "true"
+print(question, "=", answer)
+user_choice = choice_checker("True or False? ", user_responses, "Please enter 'True' or 'False'")
 
-    else:
-        answer = "false"
 
-    print("Correct answer = {}".format(answer))
+if user_choice == answer:
+    print("Correct")
 
-    user_choice = choice_checker("{} = ".format(question), user_responses_list, "Please enter 'True' or 'False")
-    
-    if user_choice == answer:
-        print("Correct\n")
-
-    else:
-        print("Sorry that is the wrong answer\n")
-
+else:
+    print("INCORRECT")
 
