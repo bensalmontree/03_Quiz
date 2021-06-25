@@ -20,104 +20,141 @@ def choice_checker(question, valid_list, error):
         print(error)
         print()
 
-select_difficulty = ""
-rounds_played = 0
-
 comparisons = ["<", ">", "=="]
 add_sub = ["+", "-", "*"]
 mul_div = ["*"]
-true_false_list = ["true", "t", "false", "f"]
+valid_responses = ["true", "false"]
 difficulty_list = ["easy", "normal", "hard", "xxx"]
+tf_questions = ["incorrect_question", "correct_question"]
 
-select_difficulty = choice_checker("Select between a 'Easy', 'Normal', or 'Hard' quiz... ", difficulty_list, "Please enter 'Easy', 'Normal' or 'Hard'... ")
+true_answer = "true"
+false_answer = "false"
 
+select_difficulty = ""
+rounds_played = 0
 
+select_difficulty = choice_checker("Select between a 'Easy', 'Normal', or 'Hard' quiz... ", difficulty_list, "Please enter 'Easy', 'Normal' or 'Hard'... \n")
 print()
+
 if select_difficulty == "easy":
     rounds = 10
-    heading = "--- 10 Easy Math Questions ---\n"
+    heading = "--- 10 Easy Difficulty Math Questions ---\n"
     print(heading)
 
     end_game = "no"
     while end_game == "no":
 
-        num_1 = random.randint(1,50)
-        num_2 = random.randint(1,50)
-      
-        print("Question {}".format(rounds_played +1, rounds))
-        rounds_played +=1
-
+        num1 = random.randint(1,10)
+        num2 = random.randint(1,10)
         operator = random.choice(comparisons)
-        question = "{} {} {}".format(num_1, operator, num_2)
-        answer = eval(question)
 
-        if answer == True:
-            answer = "true"
+        question = "{} {} {}".format(num1, operator, num2)
+        correct_answer = eval(question)
+        incorrect_answer = correct_answer - 1
+
+        gen_question = random.choice(tf_questions)
+
+        if gen_question == "correct_question":
+
+            print("{} = {}".format(question, correct_answer))
+            user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or 'False'")
+
+            if user_choice == true_answer:
+                print("Correct\n")
+            else:
+                print("INCORRECT\n")
+
         else:
-            answer = "false"
 
-        user_choice = choice_checker("(T/F) {} = ".format(question), true_false_list, "Please enter 'True' or 'False")
-        
-        if user_choice == answer:
-            print("Correct\n")
-        else:
-            print("Sorry that is the wrong answer\n")
+            print("{} = {}".format(question, incorrect_answer))
+            user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or False'")
 
-        if rounds_played == rounds:
-            break
+            if user_choice == false_answer:
+                print("Correct\n")
+            else:
+                print("INCORRECT\n")
 
-elif select_difficulty == "normal":
+            if rounds_played == rounds:
+                break
+
+if select_difficulty == "normal":
     rounds = 15
-    heading = "--- 15 Normal Math Questions ---\n"
+    heading = "--- 15 Normal Difficulty Math Questions ---\n"
     print(heading)
-    
+
     end_game = "no"
     while end_game == "no":
 
-        num_1 = random.randint(1,10)
-        num_2 = random.randint(1,10)
-      
-        print("Question {}".format(rounds_played +1, rounds))
-        rounds_played +=1
-
+        num1 = random.randint(1,10)
+        num2 = random.randint(1,10)
         operator = random.choice(add_sub)
-        question = "{} {} {}".format(num_1, operator, num_2)
-        answer = eval(question)
 
-        user_choice = int(input("{} = ".format(question)))
-        
-        if user_choice == answer:
-            print("Correct\n")
+        question = "{} {} {}".format(num1, operator, num2)
+        correct_answer = eval(question)
+        incorrect_answer = correct_answer - 1
+
+        gen_question = random.choice(tf_questions)
+
+        if gen_question == "correct_question":
+
+            print("{} = {}".format(question, correct_answer))
+            user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or 'False'")
+
+            if user_choice == true_answer:
+                print("Correct\n")
+            else:
+                print("INCORRECT\n")
+
         else:
-            print("Sorry that is the wrong answer\n")
 
-        if rounds_played == rounds:
-            break
-     
-else:
+            print("{} = {}".format(question, incorrect_answer))
+            user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or False'")
+
+            if user_choice == false_answer:
+                print("Correct\n")
+            else:
+                print("INCORRECT\n")
+
+            if rounds_played == rounds:
+                break
+
+if select_difficulty == "hard":
     rounds = 25
-    heading = "--- 25 HARD Math Questions ---\n"
+    heading = "--- 25 HARD DIFFICULTY Math Questions ---\n"
     print(heading)
-    
+
     end_game = "no"
     while end_game == "no":
 
-        num_1 = random.randint(1,20)
-        num_2 = random.randint(1,20)
-      
-        print("Question {}".format(rounds_played +1, rounds))
-        rounds_played +=1
-
+        num1 = random.randint(1,10)
+        num2 = random.randint(1,10)
         operator = random.choice(mul_div)
-        question = "{} {} {}".format(num_1, operator, num_2)
-        answer = eval(question)
 
-        user_choice = int(input("{} = ".format(question)))
-        
-        if user_choice == answer:
-            print("Correct\n")
+        question = "{} {} {}".format(num1, operator, num2)
+        correct_answer = eval(question)
+        incorrect_answer = correct_answer - 1
+
+        gen_question = random.choice(tf_questions)
+
+        if gen_question == "correct_question":
+
+            print("{} = {}".format(question, correct_answer))
+            user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or 'False'")
+
+            if user_choice == true_answer:
+                print("Correct\n")
+            else:
+                print("INCORRECT\n")
+
         else:
-            print("Sorry that is the wrong answer\n")
 
-        if rounds_played == rounds:
-            break
+            print("{} = {}".format(question, incorrect_answer))
+            user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or False'")
+
+            if user_choice == false_answer:
+                print("Correct\n")
+            else:
+                print("INCORRECT\n")
+
+            if rounds_played == rounds:
+                break

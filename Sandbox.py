@@ -20,24 +20,39 @@ def choice_checker(question, valid_list, error):
         print(error)
         print()
 
+valid_responses = ["true", "false"]
+comparisons = ["<", ">", "=="]
+add_sub = ["+", "-", "*"]
+mul_div = ["*"]
 
-user_responses = ["true", "t", "false", "f"]
-comparisons = ["*", "+", "-"]
+true_answer = "true"
+false_answer = "false"
+tf_questions = ["incorrect_question", "correct_question"]
 
-num_1 = random.randint(1,50)
-num_2 = random.randint(1,50)
+question = "1 + 1"
+correct_answer = eval(question)
+incorrect_answer = correct_answer - 1
 
-operator = random.choice(comparisons)
-question = "{} {} {}".format(num_1, operator, num_2)
-answer = eval(question)
+for item in range(0, 5):
+    gen_question = random.choice(tf_questions)
+    print(gen_question)
 
-print(question, "=", answer)
-user_choice = choice_checker("True or False? ", user_responses, "Please enter 'True' or 'False'")
+    if gen_question == "correct_question":
 
+        print("{} = {}".format(question, correct_answer))
+        user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or 'False'")
 
-if user_choice == answer:
-    print("Correct")
+        if user_choice == true_answer:
+            print("Correct\n")
+        else:
+            print("INCORRECT\n")
 
-else:
-    print("INCORRECT")
+    else:
 
+        print("{} = {}".format(question, incorrect_answer))
+        user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or False'")
+
+        if user_choice == false_answer:
+            print("Correct\n")
+        else:
+            print("INCORRECT\n")
