@@ -21,7 +21,7 @@ def choice_checker(question, valid_list, error):
         print()
 
 comparisons = ["<", ">", "=="]
-add_sub = ["+", "-", "*"]
+add_sub = ["+", "-"]
 mul_div = ["*"]
 valid_responses = ["true", "false"]
 difficulty_list = ["easy", "normal", "hard", "xxx"]
@@ -50,7 +50,7 @@ if select_difficulty == "normal":
 
         question = "{} {} {}".format(num1, operator, num2)
         correct_answer = eval(question)
-        incorrect_answer = "{} {} {}".format(correct_answer, operator, num1)
+        incorrect_answer = random.randint(1,10)
 
         gen_question = random.choice(tf_questions)
 

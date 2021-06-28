@@ -20,39 +20,49 @@ def choice_checker(question, valid_list, error):
         print(error)
         print()
 
-valid_responses = ["true", "false"]
 comparisons = ["<", ">", "=="]
 add_sub = ["+", "-", "*"]
 mul_div = ["*"]
+valid_responses = ["true", "false"]
+difficulty_list = ["easy", "normal", "hard", "xxx"]
+tf_questions = ["incorrect_question", "correct_question"]
 
 true_answer = "true"
 false_answer = "false"
-tf_questions = ["incorrect_question", "correct_question"]
 
-question = "1 + 1"
-correct_answer = eval(question)
-incorrect_answer = correct_answer - 1
+select_difficulty = ""
+rounds_played = 0
 
-for item in range(0, 5):
-    gen_question = random.choice(tf_questions)
-    print(gen_question)
+select_difficulty = choice_checker("Select between a 'Easy', 'Normal', or 'Hard' quiz... ", difficulty_list, "Please enter 'Easy', 'Normal' or 'Hard'... \n")
+print()
 
-    if gen_question == "correct_question":
+if select_difficulty == "easy":
+    rounds = 10
+    heading = "--- 10 Easy Difficulty Math Questions ---\n"
+    print(heading)
 
-        print("{} = {}".format(question, correct_answer))
+    end_game = "no"
+    while end_game == "no":
+
+        num1 = random.randint(1,10)
+        num2 = random.randint(1,10)
+        operator = random.choice(comparisons)
+
+        question = "{} {} {}".format(num1, operator, num2)
+        correct_answer = eval(question)
+
+        if correct_answer == True:
+            answer = "true"
+
+        else:
+            answer = "false"
+        
+        print(correct_answer)
+        print("{} ".format(question, correct_answer))
         user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or 'False'")
 
-        if user_choice == true_answer:
-            print("Correct\n")
-        else:
-            print("INCORRECT\n")
-
-    else:
-
-        print("{} = {}".format(question, incorrect_answer))
-        user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or False'")
-
-        if user_choice == false_answer:
+        
+        if user_choice == answer:
             print("Correct\n")
         else:
             print("INCORRECT\n")
