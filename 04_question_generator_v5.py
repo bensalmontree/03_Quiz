@@ -22,7 +22,7 @@ def choice_checker(question, valid_list, error):
 
 # List of operators
 comparisons = ["<", ">", "=="]
-add_sub = ["+", "-", "*"]
+add_sub = ["+", "-"]
 mul = ["*"]
 
 # List of valid responses
@@ -34,27 +34,27 @@ tf_questions = ["incorrect_question", "correct_question"]
 true_answer = "true"
 false_answer = "false"
 
-# Define select_difficulty and set 'rounds_played' to 0
+# Define select_difficulty and set 'questions_answered' to 0
 select_difficulty = ""
-rounds_played = 0
+questions_answered = 0
 
 # Ask user what difficulty of questions they want to play
 select_difficulty = choice_checker("Select between a 'Easy', 'Normal', or 'Hard' quiz... ", difficulty_list, "Please enter 'Easy', 'Normal' or 'Hard'... \n")
 print()
 
-# For selected difficulty print matching heading and rounds number
+# For selected difficulty print matching heading and questions_answered number
 if select_difficulty == "easy":
-    rounds = 10
+    question_number = 10
     heading = "--- 10 Easy Difficulty Math Questions ---\n"
     print(heading)
 
 if select_difficulty == "normal":
-    rounds = 15
+    question_number = 15
     heading = "--- 15 Normal Difficulty Math Questions ---\n"
     print(heading)
 
 if select_difficulty == "hard":
-    rounds = 25
+    question_number = 25
     heading = "--- 25 HARD DIFFICULTY Math Questions ---\n"
     print(heading)
 
@@ -63,9 +63,9 @@ end_game = "no"
 while end_game == "no":
 
     # Print heading and add 1 for each round played
-    question_heading = "-- Question {} / {} --".format(rounds_played + 1, rounds)
+    question_heading = "-- Question {} / {} --".format(questions_answered + 1, question_number)
     print(question_heading)
-    rounds_played += 1
+    questions_answered += 1
 
     # Randomly generate operator 
     if select_difficulty == "easy":
@@ -143,6 +143,6 @@ while end_game == "no":
             else:
                 print("INCORRECT\n")
 
-    # End Loop if number of rounds have overlapped total rounds
-    if rounds_played == rounds:
+    # End Loop if number of questions have overlapped total question_number
+    if questions_answered == question_numer:
         break
