@@ -30,6 +30,7 @@ mul = ["*"]
 # List of valid responses
 valid_responses = ["true", "false"]
 difficulty_list = ["easy", "normal", "hard", "xxx"]
+yes_no_list = ["yes", "no"]
 
 # Define correct and incorrect questions + list
 tf_questions = ["incorrect_question", "correct_question"]
@@ -41,9 +42,12 @@ select_difficulty = ""
 rounds_played = 0
 
 # Rounds set to 5 for testing purposes
-rounds = 20
+rounds = 5
 rounds_won = 0
 rounds_lost = 0
+
+# Empty list
+quiz_summary = []
 
 # Start of Loop
 end_game = "no"
@@ -69,6 +73,10 @@ while end_game == "no":
     else:
         print("INCORRECT\n")
         rounds_lost +=1
+    
+
+    outcome = "Round {}: {} - You said {}, the right answer is {}".format(rounds_played, question, user_choice, true_answer)
+    quiz_summary.append(outcome)
 
     # End Loop if number of rounds have overlapped total rounds
     if rounds_played == rounds:
@@ -79,4 +87,11 @@ percent_correct = rounds_won / rounds * 100
 print("-- Stats --")
 print("You got {:.0f}% correct".format(percent_correct))
 print("{} / {} \n".format(rounds_won, rounds))
-print("Thanks for playing the quiz")
+
+game_history = choice_checker("Do you want to see game history? ", yes_no_list, "Please answer with 'Yes' no 'No' ")
+if game_history == "yes":
+    print("\n**** Game History****")
+    for quiz in quiz_summary:
+        print(quiz)
+
+print("\nThanks for playing the quiz")

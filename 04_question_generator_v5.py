@@ -59,10 +59,9 @@ if select_difficulty == "hard":
     print(heading)
 
 # Start of Loop
-end_game = "no"
-while end_game == "no":
+while questions_answered != question_number:
 
-    # Print heading and add 1 for each round played
+    # Print heading and add 1 for each question answered
     question_heading = "-- Question {} / {} --".format(questions_answered + 1, question_number)
     print(question_heading)
     questions_answered += 1
@@ -124,7 +123,7 @@ while end_game == "no":
             user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or 'False'")
 
             # Compare choices and print "Correct" or "Incorrect"
-            if user_choice == true_answer:
+            if user_choice == correct_answer:
                 print("Correct\n")
             else:
                 print("INCORRECT\n")
@@ -142,7 +141,3 @@ while end_game == "no":
                 print("Correct\n")
             else:
                 print("INCORRECT\n")
-
-    # End Loop if number of questions have overlapped total question_number
-    if questions_answered == question_numer:
-        break
