@@ -68,6 +68,7 @@ while end_game == "no":
 
     # Compare choices and print "Correct" or "Incorrect"
     if user_choice == true_answer:
+        tf_answer = "true"
         print("Correct\n")
         rounds_won +=1
     else:
@@ -75,7 +76,7 @@ while end_game == "no":
         rounds_lost +=1
     
 
-    outcome = "Round {}: {} - You said {}, the right answer is {}".format(rounds_played, question, user_choice, true_answer)
+    outcome = "Round {}: {} - You said {}, the right answer is {}".format(rounds_played, question, user_choice, tf_answer)
     quiz_summary.append(outcome)
 
     # End Loop if number of rounds have overlapped total rounds
@@ -95,3 +96,5 @@ if game_history == "yes":
         print(quiz)
 
 print("\nThanks for playing the quiz")
+
+"true", "false"

@@ -28,6 +28,7 @@ mul = ["*"]
 # List of valid responses
 valid_responses = ["true", "false"]
 difficulty_list = ["easy", "normal", "hard", "xxx"]
+yes_no_list = ["yes", "no"]
 
 # Define correct and incorrect questions + list
 tf_questions = ["incorrect_question", "correct_question"]
@@ -37,6 +38,11 @@ false_answer = "false"
 # Define select_difficulty and set 'questions_answered' to 0
 select_difficulty = ""
 questions_answered = 0
+
+# Stuf
+rounds_won = 0
+rounds_lost = 0
+quiz_summary = []
 
 # Ask user what difficulty of questions they want to play
 select_difficulty = choice_checker("Select between a 'Easy', 'Normal', or 'Hard' quiz... ", difficulty_list, "Please enter 'Easy', 'Normal' or 'Hard'... \n")
@@ -123,7 +129,8 @@ while questions_answered != question_number:
             user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or 'False'")
 
             # Compare choices and print "Correct" or "Incorrect"
-            if user_choice == correct_answer:
+            if user_choice == true_answer:
+                tf_answer = "true"
                 print("Correct\n")
             else:
                 print("INCORRECT\n")
@@ -138,6 +145,26 @@ while questions_answered != question_number:
 
             # Compare choices and print "Correct" or "Incorrect"
             if user_choice == false_answer:
+                tf_answer = "false"
                 print("Correct\n")
             else:
                 print("INCORRECT\n")
+
+        outcome = "Round {}: {} - You said {}, the right answer is {}".format(questions_answered, question, user_choice, tf_answer)
+        quiz_summary.append(outcome)
+
+percent_correct = rounds_won / question_number * 100
+
+print("-- Stats --")
+print("You got {:.0f}% correct".format(percent_correct))
+print("{} / {} \n".format(rounds_won, question_number))
+
+game_history = choice_checker("Do you want to see game history? ", yes_no_list, "Please answer with 'Yes' no 'No' ")
+if game_history == "yes":
+    print("\n**** Game History****")
+    for quiz in quiz_summary:
+        print(quiz)
+
+print("\nThanks for playing the quiz")
+
+"true", "false"
