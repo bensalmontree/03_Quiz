@@ -39,11 +39,6 @@ false_answer = "false"
 select_difficulty = ""
 questions_answered = 0
 
-# Stuf
-rounds_won = 0
-rounds_lost = 0
-quiz_summary = []
-
 # Ask user what difficulty of questions they want to play
 select_difficulty = choice_checker("Select between a 'Easy', 'Normal', or 'Hard' quiz... ", difficulty_list, "Please enter 'Easy', 'Normal' or 'Hard'... \n")
 print()
@@ -149,22 +144,3 @@ while questions_answered != question_number:
                 print("Correct\n")
             else:
                 print("INCORRECT\n")
-
-        outcome = "Round {}: {} - You said {}, the right answer is {}".format(questions_answered, question, user_choice, tf_answer)
-        quiz_summary.append(outcome)
-
-percent_correct = rounds_won / question_number * 100
-
-print("-- Stats --")
-print("You got {:.0f}% correct".format(percent_correct))
-print("{} / {} \n".format(rounds_won, question_number))
-
-game_history = choice_checker("Do you want to see game history? ", yes_no_list, "Please answer with 'Yes' no 'No' ")
-if game_history == "yes":
-    print("\n**** Game History****")
-    for quiz in quiz_summary:
-        print(quiz)
-
-print("\nThanks for playing the quiz")
-
-"true", "false"

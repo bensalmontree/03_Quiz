@@ -105,76 +105,26 @@ while questions_answered != question_number:
     # Randomly choose between a correct or incorrect statment
     gen_question = random.choice(tf_questions)
 
-    # If 'Easy Difficulty' was selected print out question without answer 
-    # e.g 5 > 3 instead of 5 > 3 = True
-    if select_difficulty == "easy":
+    if gen_question == "correct_question":
+        ask_question = "{} = {}".format(question, correct_answer)
+    elif gen_question == "incorrect_question":
+        ask_question = "{} = {}".format(question, incorrect_answer)
 
-        # Ask user (T/F) question
-        print("{} ".format(question))
-        user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or 'False'")
+    # Ask user (T/F) question
+    print(ask_question)
+    user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or 'False'")
 
-        # Compare choices and print "Correct" or "Incorrect"
-        if user_choice == answer: 
-            questions_correct += 1
-            print("Correct\n")
-           
-        else:
-            questions_incorrect += 1
-            print("INCORRECT\n")
-            
-
-    # If 'Easy Difficulty' is not selected, print out question with answer
-    # e.g 5 + 5 = 10
+    if user_choice == "false" and gen_question == "correct_question":
+        outcome = "Correct"
+    elif user_choice == "true" and gen_question == "incorrect_question":
+            outcome = "Correct"
     else:
+        outcome = "Incorrect"
+    
+    print(outcome)
+    print()
 
-        # If randomly generated question is "correct_question", 
-        # print out a correct math statement
-        if gen_question == "correct_question":
 
-            # Ask user (T/F) question
-            print("{} = {}".format(question, correct_answer))
-            user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or 'False'")
-
-            # Compare choices and print "Correct" or "Incorrect"
-            if user_choice == true_answer:
-                tf_answer = "true"
-                questions_correct =+ 1
-                print("Correct\n")
-            else:
-                questions_incorrect += 1
-                print("INCORRECT\n")
-                
-
-        # If randomly generated question is "incorrect_question", 
-        # print out a correct math statment
-        else:
-
-            # Ask user (T/F) question
-            print("{} = {}".format(question, incorrect_answer))
-            user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or False'")
-
-            # Compare choices and print "Correct" or "Incorrect"
-            if user_choice == false_answer:
-                tf_answer = "false"
-                questions_correct =+ 1
-                print("Correct\n")
-            else:
-                print("INCORRECT\n")
-
-        outcome = "Round {}: {} - You said {}, the right answer is {}".format(questions_answered, question, user_choice, tf_answer)
-        quiz_summary.append(outcome)
-
-percent_correct = questions_correct / question_number * 100
-
-print("-- Stats --")
-print("You got {:.0f}% correct".format(percent_correct))
-print("{} / {} \n".format(questions_correct, question_number))
-
-game_history = choice_checker("Do you want to see game history? ", yes_no_list, "Please answer with 'Yes' no 'No' ")
-if game_history == "yes":
-    print("\n**** Game History****")
-    for quiz in quiz_summary:
-        print(quiz)
-
-print("\nThanks for playing the quiz")
-
+# Generate correct and incorrect statement
+# Generation question and ask user question
+# Give Feedback
