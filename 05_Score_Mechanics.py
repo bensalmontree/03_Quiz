@@ -22,6 +22,7 @@ def choice_checker(question, valid_list, error):
         print(error)
         print()
 
+
 # List of operators
 comparisons = ["<", ">", "=="]
 add_sub = ["+", "-"]
@@ -48,6 +49,7 @@ rounds_lost = 0
 
 # Empty list
 quiz_summary = []
+answer_summary = []
 
 # Start of Loop
 end_game = "no"
@@ -71,12 +73,14 @@ while end_game == "no":
         tf_answer = "true"
         print("Correct\n")
         rounds_won +=1
+        answer_summary.append("Right! ╰(*°▽°*)╯")
+    
     else:
         print("INCORRECT\n")
         rounds_lost +=1
-    
+        answer_summary.append("Wrong (┬┬﹏┬┬)")
 
-    outcome = "Round {}: {} - You said {}, the right answer is {}".format(rounds_played, question, user_choice, tf_answer)
+    outcome = " {}: {} - You said {}, you got it {}".format(rounds_played, question, user_choice, answer_summary[rounds_played -1])
     quiz_summary.append(outcome)
 
     # End Loop if number of rounds have overlapped total rounds
@@ -96,5 +100,3 @@ if game_history == "yes":
         print(quiz)
 
 print("\nThanks for playing the quiz")
-
-"true", "false"
