@@ -20,6 +20,19 @@ def choice_checker(question, valid_list, error):
         print(error)
         print()
 
+def instructions():
+    print()
+    print("--- This is the 3 Difficulty Math Quiz ---\n")
+    print("All questions will be answered with 'True' or 'False' or alternatively 'T' or 'F'\n")
+    print("There are 3 difficulties to this quiz - 'Easy', 'Normal' and 'Hard'\n")
+    print("All difficulties will display a random math statement and your job is to say if it's 'True' or 'False'\n")
+    print("Easy has [Greater or Lower] questions")
+    print("Normal has [Addition / Subtraction] questions")
+    print("Hard has [Multiplication] questions\n")
+    print("After answering all the questions we will tally up the points and tell you how much you got right!")
+    print("Can you get 100% on all 3 Difficulties?")
+    return ""
+
 # List of operators
 comparisons = ["<", "<", "<", ">", ">", ">", "=="]
 add_sub = ["+", "-"]
@@ -44,7 +57,16 @@ questions_correct = 0
 quiz_summary = []
 answer_summary = []
 
+# Ask user if they have played before
+# If 'yes', show instructions
+played_before = choice_checker("Have you played the "
+                           "quiz before? ", yes_no_list, "Please enter yes or no")
+
+if played_before == "no":
+    instructions()
+
 # Ask user what difficulty of questions they want to play
+print()
 select_difficulty = choice_checker("Select between a 'Easy', 'Normal', or 'Hard' quiz... ", difficulty_list, "Please enter 'Easy', 'Normal' or 'Hard'... \n")
 print()
 
@@ -113,27 +135,28 @@ while questions_answered != question_number:
         elif gen_question == "incorrect_question":
             ask_question = "{} = {}".format(question, incorrect_answer)
 
+
     # Ask user (T/F) question
     print(ask_question)
     user_choice = choice_checker("True or False? ", valid_responses, "Please choose between 'True' or 'False'")
 
-    # Compare answers and give feedback
-    if user_choice == "true" and answer == "true" or user_choice == "false" and answer == "false" or user_choice == "true" and gen_question == "correct_question" or user_choice == "false" and gen_question == "incorrect_question":
+    # Compare user's choice with the answer and give feedback   
+    if (user_choice == "true" and answer == "true" or user_choice == "false" and answer == "false") or (user_choice == "false" and gen_question == "incorrect_question" or user_choice == "true" and gen_question == "correct_question"):
         outcome = "You got it Correct!"
-        answer_summary.append("Right! ")
+        answer_summary.append("You were Right! ╰(*°▽°*)╯")
         questions_correct += 1
-
+    
     else:
         outcome = "You got it Incorrect"
-        answer_summary.append("Wrong ")
+        answer_summary.append("You were Wrong (┬┬﹏┬┬)")
     
     print(outcome)
     print()
-    
+
+    # Append result of question into a list for quiz summary
     outcome = "Question {}: {} - You said {}, {}".format(questions_answered, question, user_choice, answer_summary[questions_answered -1])
     quiz_summary.append(outcome)
     
-
 percent_correct = questions_correct / questions_answered * 100
 
 print("-- Stats --")
@@ -142,7 +165,7 @@ print("{} / {} \n".format(questions_correct, questions_answered))
 
 game_history = choice_checker("Do you want to see game history? ", yes_no_list, "Please answer with 'Yes' no 'No' ")
 if game_history == "yes":
-    print("\n**** Game History****")
+    print("\n----- Game History -----")
     for quiz in quiz_summary:
         print(quiz)
 
